@@ -1,6 +1,6 @@
 const String login = 'login';
 
-const String registration = 'registration';
+const String registration = 'register';
 
 const String home = 'home';
 

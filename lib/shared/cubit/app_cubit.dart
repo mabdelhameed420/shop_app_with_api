@@ -140,7 +140,8 @@ class AppCubit extends Cubit<AppStates> {
       },
     ).then((value) {
       registrationModel = LoginModel.fromJson(value.data);
-      if (registrationModel!.data != null) token = registrationModel!.data!.token;
+      if (registrationModel!.data != null)
+        token = registrationModel!.data!.token;
       emit(AppSuccessfullyRegistrationState(registrationModel!));
       getProfileData();
       getFavoritesData();
@@ -251,12 +252,13 @@ class AppCubit extends Cubit<AppStates> {
   ProfileModel? updateProfileModel;
 
   void updateProfileData(
-      String name, String phone, String email) {
+      String name, String phone, String email, String password) {
     emit(AppProfileLoadingState());
     AppDio.putData(url: updateProfile, token: token, data: {
       'name': name,
       'phone': phone,
       'email': email,
+      'password': password,
     }).then((value) {
       updateProfileModel = ProfileModel.fromJson(value.data);
       emit(AppSuccessfulUpdateProfileState(updateProfileModel!));

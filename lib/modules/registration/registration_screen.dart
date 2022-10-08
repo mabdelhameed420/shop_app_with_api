@@ -111,6 +111,9 @@ class RegistrationScreen extends StatelessWidget {
                               ),
                             ),
                             defaultTextField(
+                              onSubmit: (value){
+                                nameController.text = value.toString();
+                              },
                               prefixIcon: Icons.person,
                               context: context,
                               text: 'Name',
@@ -126,6 +129,9 @@ class RegistrationScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 20),
                             defaultTextField(
+                              onSubmit: (value){
+                                phoneController.text = value.toString();
+                              },
                               prefixIcon: Icons.phone,
                               context: context,
                               text: 'Phone',
@@ -142,6 +148,9 @@ class RegistrationScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 20),
                             defaultTextField(
+                              onSubmit: (value){
+                                emailController.text = value.toString();
+                              },
                               prefixIcon: Icons.email_outlined,
                               context: context,
                               text: 'Email Address',
@@ -158,6 +167,9 @@ class RegistrationScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 20),
                             defaultTextField(
+                              onSubmit: (value){
+                                passwordController.text = value.toString();
+                              },
                               prefixIcon: Icons.lock_outline,
                               context: context,
                               text: 'Password',
