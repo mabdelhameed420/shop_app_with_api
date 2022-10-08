@@ -932,8 +932,7 @@ Widget columnProfile(ProfileDataModel model, context, state, bool isUpdate) =>
                       AppCubit.get(context).updateProfileData(
                           nameController.text,
                           phoneController.text,
-                          emailController.text,
-                          passwordController.text);
+                          emailController.text,);
                       if (state is AppSuccessfulUpdateProfileState) {
                         navigateTo(context, const HomeScreen());
                       }

@@ -32,7 +32,7 @@ class UpdateScreen extends StatelessWidget {
             condition: cubit.profileModel != null && token != null,
             builder: (context) => SingleChildScrollView(
                 child: columnProfile(cubit.profileModel!.data, context, state,isUpdate)),
-            fallback: (context) => LoginScreen(),
+            fallback: (context) => const LoginScreen(),
           ),
         );
       },

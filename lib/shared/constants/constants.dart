@@ -9,7 +9,6 @@ bool inCart = false;
 bool inFavorites = false;
 
 var formKey = GlobalKey<FormState>();
-var passwordController = TextEditingController();
 var emailController = TextEditingController();
 var nameController = TextEditingController();
 var phoneController = TextEditingController();
