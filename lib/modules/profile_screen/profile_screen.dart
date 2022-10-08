@@ -41,7 +41,7 @@ class ProfileScreen extends StatelessWidget {
             builder: (context) => SingleChildScrollView(
                 child: columnProfile(
                     cubit.profileModel!.data, context, state, isUpdate)),
-            fallback: (context) => LoginScreen(),
+            fallback: (context) => const LoginScreen(),
           ),
         );
       },

@@ -6,17 +6,14 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:shop_app/layout/home.dart';
 import 'package:shop_app/modules/registration/registration_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
-import 'package:shop_app/shared/constants/constants.dart';
 import 'package:shop_app/shared/cubit/app_cubit.dart';
 import 'package:shop_app/shared/cubit/app_states.dart';
 import 'package:shop_app/shared/network/local/cach_helper.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
-  var formKey = GlobalKey<FormState>();
-  var emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +27,6 @@ class LoginScreen extends StatelessWidget {
             CachedHelper.putData(
                     key: 'token', value: state.loginModel!.data!.token)
                 .then((value) {
-              token = state.loginModel!.data!.token;
               navigateWithoutBack(context, const HomeScreen());
             });
           } else {
@@ -38,9 +34,11 @@ class LoginScreen extends StatelessWidget {
                 massage: state.loginModel!.message!, state: ToastStates.error);
           }
         }
-        token = AppCubit().loginModel!.data!.token;
       },
       builder: (context, state) {
+        var formKey = GlobalKey<FormState>();
+        var emailController = TextEditingController();
+        var passwordController = TextEditingController();
         return Scaffold(
           appBar: AppBar(
             backgroundColor: HexColor('#040404'),

@@ -6,7 +6,6 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:shop_app/layout/home.dart';
 import 'package:shop_app/modules/login_screen/login_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
-import 'package:shop_app/shared/constants/constants.dart';
 import 'package:shop_app/shared/cubit/app_cubit.dart';
 import 'package:shop_app/shared/cubit/app_states.dart';
 import 'package:shop_app/shared/network/local/cach_helper.dart';
@@ -26,7 +25,6 @@ class RegistrationScreen extends StatelessWidget {
             CachedHelper.putData(
                     key: 'token', value: state.registrationModel!.data!.token)
                 .then((value) {
-              token = state.registrationModel!.data!.token;
               navigateWithoutBack(context, const HomeScreen());
             });
           } else {
@@ -41,6 +39,7 @@ class RegistrationScreen extends StatelessWidget {
         var emailController = TextEditingController();
         var nameController = TextEditingController();
         var phoneController = TextEditingController();
+        var passwordController = TextEditingController();
         return Scaffold(
           appBar: AppBar(
             backgroundColor: HexColor('#FFFFFF'),
@@ -233,7 +232,7 @@ class RegistrationScreen extends StatelessWidget {
                         const Text('I\' already exist?'),
                         defaultTextButton(
                             onPressed: () {
-                              navigateTo(context, LoginScreen());
+                              navigateTo(context, const LoginScreen());
                             },
                             text: 'Sign in'),
                       ],

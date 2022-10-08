@@ -36,7 +36,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   void submit(){
     CachedHelper.putData(key: 'onBoarding', value: true).then((value) {
       if(value) {
-        navigateWithoutBack(context, LoginScreen());
+        navigateWithoutBack(context, const LoginScreen());
       }
     });
   }
