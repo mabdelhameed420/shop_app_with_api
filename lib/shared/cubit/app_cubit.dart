@@ -116,7 +116,6 @@ class AppCubit extends Cubit<AppStates> {
       getFavoritesData();
       getCartData();
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorLoginState(error.toString()));
     });
   }
@@ -147,7 +146,6 @@ class AppCubit extends Cubit<AppStates> {
       getFavoritesData();
       getCartData();
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorRegistrationState(error.toString()));
     });
   }
@@ -170,7 +168,6 @@ class AppCubit extends Cubit<AppStates> {
       }
       emit(AppSuccessfullyHomeDataState());
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorHomeDataState());
     });
   }
@@ -206,7 +203,6 @@ class AppCubit extends Cubit<AppStates> {
       emit(AppSuccessfullyChangeFavoritesState(changeFavoritesModel!));
       getHomeData();
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorChangeFavoritesState());
     });
   }
@@ -221,14 +217,13 @@ class AppCubit extends Cubit<AppStates> {
       getFavoritesModel = GetFavoritesModel.fromJson(value.data);
       emit(AppSuccessfulGetFavoritesState());
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorGetFavoritesState());
     });
   }
 
   void clearLoginData(context) {
     CachedHelper.clearData(key: 'token').then((value) {
-      navigateWithoutBack(context, LoginScreen());
+      navigateWithoutBack(context, const LoginScreen());
     });
   }
 
@@ -244,7 +239,6 @@ class AppCubit extends Cubit<AppStates> {
       if (profileModel!.data != null) token = profileModel!.data.token;
       emit(AppSuccessfulGetProfileState());
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorGetProfileState());
     });
   }
@@ -252,19 +246,17 @@ class AppCubit extends Cubit<AppStates> {
   ProfileModel? updateProfileModel;
 
   void updateProfileData(
-      String name, String phone, String email, String password) {
+      String name, String phone, String email) {
     emit(AppProfileLoadingState());
     AppDio.putData(url: updateProfile, token: token, data: {
       'name': name,
       'phone': phone,
       'email': email,
-      'password': password,
     }).then((value) {
       updateProfileModel = ProfileModel.fromJson(value.data);
       emit(AppSuccessfulUpdateProfileState(updateProfileModel!));
       getProfileData();
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorUpdateProfileState());
     });
   }
@@ -281,7 +273,6 @@ class AppCubit extends Cubit<AppStates> {
       getCartData();
       emit(AppSuccessfulChangeCartState());
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorChangeCartState());
     });
   }
@@ -295,10 +286,8 @@ class AppCubit extends Cubit<AppStates> {
       token: token,
     ).then((value) {
       getCartModel = GetCartModel.fromJson(value.data);
-      print(value.data);
       emit(AppSuccessfulGetCartState());
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorGetCartState());
     });
   }
@@ -319,7 +308,6 @@ class AppCubit extends Cubit<AppStates> {
       getProfileData();
       emit(AppSuccessfulChangePasswordState(changePassword!));
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorChangePasswordState());
     });
   }
@@ -333,7 +321,6 @@ class AppCubit extends Cubit<AppStates> {
       searchModel = SearchModel.fromJson(value.data);
       emit(AppSuccessfulSearchState());
     }).catchError((error) {
-      print(error.toString());
       emit(AppErrorSearchState());
     });
   }
